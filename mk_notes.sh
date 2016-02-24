@@ -1,7 +1,7 @@
 D=$(date +%m-%d-%Y.md)
 atom -w $D
-notes_cat
+~/GitHub/projects/./notes_cat.py
 git add *.md
 git commit -m "Add $D"
-gits
+~/GitHub/projects/./gits.sh
 git push
