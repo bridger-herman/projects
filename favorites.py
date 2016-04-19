@@ -77,7 +77,9 @@ def get_fav(nick = ""):
     d = read_file(f)
     if d != None:
         try:
-            system("cd " + d[nick][0])
+            # TODO working here
+            # system("cd " + d[nick][0])
+            system("clear")
             d[nick][1] += 1
         except KeyError:
             print("favorites: invalid name", nick)
