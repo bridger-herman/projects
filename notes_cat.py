@@ -7,7 +7,7 @@ except IndexError:
     d = "."
 
 files = []
-for f in os.listdir(d):
+for f in sorted(os.listdir(d)):
     if fnmatch.fnmatch(f, "*[!README].md"):
         files.append(f)
 tmp = ""
