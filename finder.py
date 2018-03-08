@@ -6,13 +6,13 @@ from os import walk, path
 from sys import argv
 
 def display(line, number, filepath):
-    print("line " + str(number) + ", " + filepath)
+    print('line {:03}, {}'.format(number, filepath))
 
 def search_file(filepath, key = "", regex = False, ignore_case = True):
     fin = open(filepath, "r")
     key = key.lower() if ignore_case else key
     i = 1
-    count = 0
+    infos = []
     try:
         for line in fin:
             match = False
@@ -22,13 +22,22 @@ def search_file(filepath, key = "", regex = False, ignore_case = True):
             else:
                 match = key in line
             if match:
-                display(line, i, filepath)
-                count += 1
+                infos.append((line, i, filepath))
             i += 1
     except UnicodeDecodeError:
         pass
     fin.close()
-    return count
+    return infos
+
+
+def search_dir(term, directory='.', regex=False, ignore_case=True):
+    w = walk(directory)
+    infos = []
+    for (top, dirs, files) in w:
+        for f in files:
+            infos += search_file(path.join(top, f), term, regex,
+                    ignore_case)
+    return infos
 
 def main():
     options = {"i": "ignore case", "r": "use regular expression"}
@@ -39,13 +48,10 @@ def main():
         for flag in flags:
             if flag not in options:
                 raise IndexError
-        w = walk(".")
-        count = 0
-        for (top, dirs, files) in w:
-            for f in files:
-                count += search_file(path.join(top, f), argv[1], "r" in flags,
-                    "i" in flags)
-        print(argv[1], "occurred on", count, "lines")
+        infos = search_dir(argv[1], '.', 'r' in flags, 'i' in flags)
+        for line, number, filepath in infos:
+            display(line, number, filepath)
+        print(argv[1], "occurred on", len(infos), "lines")
     except IndexError:
         print("Usage: ./finder.py key <options>")
         print("Options:")
