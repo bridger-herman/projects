@@ -1,0 +1,14 @@
+[Unit]
+Description=Custom keyboard settings
+
+[Service]
+# Type=oneshot
+# RemainAfterExit=yes
+# StandardInput=tty
+# StandardOutput=tty
+ExecStart=/home/bridger/GitHub/config/keyboard.sh
+# ExecStart=/usr/bin/kbdrate -s -d 200 -r 60
+# ExecStart=/usr/bin/setxkbmap -layout us -option ctrl:swapcaps
+
+[Install]
+WantedBy=multi-user.target
