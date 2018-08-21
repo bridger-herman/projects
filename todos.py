@@ -9,11 +9,12 @@ def display(line, number, filepath):
 def main():
     search_term = 'TODO'
     if len(sys.argv) == 1:
-        infos = search_dir(search_term)
-    elif len(sys.argv) > 1:
-        infos = search_dir(search_term, sys.argv[1])
+        infos = search_dir(search_term, '.', print_incremental=False)
+    elif len(sys.argv) == 2:
+        infos = search_dir(search_term, sys.argv[1], print_incremental=False)
     else:
-        infos = [(None, None, None)]
+        print('bad argument')
+        return
     for line, number, filepath in infos:
         display(line, number, filepath)
 

@@ -40,6 +40,8 @@ def matches_exclude(exclude_patterns, pattern):
 
 def search_dir(term, directory, exclude_patterns=None, regex=False,
         ignore_case=True, print_incremental=True):
+    if exclude_patterns is None:
+        exclude_patterns = []
     w = walk(directory)
     infos = []
     for (top, dirs, files) in w:
