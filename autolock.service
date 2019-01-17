@@ -1,0 +1,12 @@
+[Unit]
+Description=Lock the screen automatically after a timeout
+
+[Service]
+Type=simple
+Environment=DISPLAY=:0
+; ExecStart=/usr/bin/xautolock -time 5 -locker "i3lock --color=002630"
+ExecStart=/home/bridger/GitHub/projects/autolock.sh
+
+[Install]
+WantedBy=graphical.target
+; WantedBy=default.target

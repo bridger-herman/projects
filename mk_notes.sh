@@ -7,6 +7,8 @@ while getopts ":a:f:" opt; do
     case "$opt" in
         a) amend=1;;
         f) fix_date=$OPTARG;;
+        h) echo "-a  Amend to current date";
+           echo "-f  Fix date (yyyy-mm-dd)";;
     esac
 done
 
