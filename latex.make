@@ -19,3 +19,10 @@ clean:
 
 superclean: clean
 	$(RM) *.pdf
+
+echogit:
+	echo "*.aux" >> .gitignore
+	echo "*.bbl" >> .gitignore
+	echo "*.blg" >> .gitignore
+	echo "*.log" >> .gitignore
+	echo "*.out" >> .gitignore
