@@ -6,7 +6,7 @@ Description=Custom keyboard settings
 # RemainAfterExit=yes
 # StandardInput=tty
 # StandardOutput=tty
-ExecStart=/home/bridger/GitHub/config/keyboard.sh
+ExecStart=/home/bridger/GitHub/projects/keyboard.sh
 # ExecStart=/usr/bin/kbdrate -s -d 200 -r 60
 # ExecStart=/usr/bin/setxkbmap -layout us -option ctrl:swapcaps
 
